@@ -1,0 +1,68 @@
+﻿@model List<KeyValuePair<string, string>>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Motorcycles</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#brand1").change(function() {
+                var url = "/Motorcycle/GetModels?manufacturerUrl=" + $(this).val();
+                $.getJSON(url, function(data) {
+                    var options = '<option value="">Select Model</option>';
+                    $.each(data, function(key, value) {
+                        options += '<option value="' + value.value + '">' + value.key + '</option>';
+                    });
+                    $("#model1").html(options);
+                });
+            });
+
+            $("#brand2").change(function() {
+                var url = "/Motorcycle/GetModels?manufacturerUrl=" + $(this).val();
+                $.getJSON(url, function(data) {
+                    var options = '<option value="">Select Model</option>';
+                    $.each(data, function(key, value) {
+                        options += '<option value="' + value.value + '">' + value.key + '</option>';
+                    });
+                    $("#model2").html(options);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Select Motorcycles</h1>
+    <form asp-action="Compare" asp-controller="Motorcycle" method="post">
+        <div>
+            <label for="brand1">Brand 1:</label>
+            <select name="brand1" id="brand1">
+                <option value="">Select Brand</option>
+                @foreach (var manufacturer in Model)
+                {
+                    <option value="@manufacturer.Value">@manufacturer.Key</option>
+                }
+            </select>
+            <label for="model1">Model 1:</label>
+            <select name="modelUrl1" id="model1">
+                <option value="">Select Model</option>
+            </select>
+        </div>
+        <div>
+            <label for="brand2">Brand 2:</label>
+            <select name="brand2" id="brand2">
+                <option value="">Select Brand</option>
+                @foreach (var manufacturer in Model)
+                {
+                    <option value="@manufacturer.Value">@manufacturer.Key</option>
+                }
+            </select>
+            <label for="model2">Model 2:</label>
+            <select name="modelUrl2" id="model2">
+                <option value="">Select Model</option>
+            </select>
+        </div>
+        <button type="submit">Compare</button>
+    </form>
+</body>
+</html>

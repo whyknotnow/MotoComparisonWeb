@@ -1,0 +1,31 @@
+﻿@using MotoComparisonWeb.Models
+@model List<MotorcycleSpec>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Motorcycle Comparison</title>
+</head>
+<body>
+    <h1>Motorcycle Comparison</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Specification</th>
+                <th>Model 1</th>
+                <th>Model 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var spec in Model)
+            {
+                <tr>
+                    <td>@spec.Specification</td>
+                    <td>@spec.ComparisonModelOne</td>
+                    <td>@spec.ComparisonModelTwo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
