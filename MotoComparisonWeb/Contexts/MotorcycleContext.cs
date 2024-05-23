@@ -8,7 +8,7 @@ public class MotorcycleContext : DbContext
 
     public DbSet<Manufacturer> Manufacturers { get; set; }
     public DbSet<Model> Models { get; set; }
-    public DbSet<Specification> Specifications { get; set; }
+    public DbSet<MotoSpecification> Specifications { get; set; }
 }
 
 public class Manufacturer
@@ -28,7 +28,7 @@ public class Model
     public Manufacturer Manufacturer { get; set; }
 }
 
-public class Specification
+public class MotoSpecification
 {
     public int Id { get; set; }
     public string Key { get; set; }

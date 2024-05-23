@@ -52,11 +52,10 @@ namespace MotoComparisonWeb.Services
             return manufacturers;
         }
 
-        public async Task<List<KeyValuePair<string, string>>> GetModels(string manufacturerUrl)
+        public async Task<List<Model>> GetMotorcycleModels(string manufacturerUrl)
         {
             var models = await _context.Models
                                        .Where(m => m.Manufacturer.Url == manufacturerUrl)
-                                       .Select(m => new KeyValuePair<string, string>(m.Name, m.Url))
                                        .ToListAsync();
             return models;
         }

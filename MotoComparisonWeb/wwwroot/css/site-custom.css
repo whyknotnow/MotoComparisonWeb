@@ -1,0 +1,41 @@
+﻿body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.suggestions {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1000;
+    max-height: 150px;
+    overflow-y: auto;
+    width: calc(100% - 30px);
+}
+
+    .suggestions ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .suggestions li {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .suggestions li:hover {
+            background-color: #f0f0f0;
+        }
+
+h1 {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,8 @@
+﻿@model List<Model>
+
+<ul class="list-unstyled">
+    @foreach (var xx in Model)
+    {
+        <li class="suggestion-item" data-value="@xx.Url">@xx.Name</li>
+    }
+</ul>

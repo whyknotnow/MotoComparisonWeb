@@ -1,15 +1,14 @@
 ﻿@using MotoComparisonWeb.Models
 @model List<MotorcycleSpec>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Motorcycle Comparison</title>
-</head>
-<body>
-    <h1>Motorcycle Comparison</h1>
-    <table border="1">
-        <thead>
+@{
+    ViewData["Title"] = "Motorcycle Comparison";
+}
+
+<h1 class="text-center">Motorcycle Comparison</h1>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Specification</th>
                 <th>Model 1</th>
@@ -27,5 +26,4 @@
             }
         </tbody>
     </table>
-</body>
-</html>
+</div>

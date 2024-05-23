@@ -2,6 +2,8 @@
 
 using MotoComparisonWeb.Services;
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 public class MotorcycleController : Controller
@@ -31,9 +33,10 @@ public class MotorcycleController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetModels(string manufacturerUrl)
+    public async Task<IActionResult> GetModelSuggestions(string manufacturerUrl, string term)
     {
-        var models = await _motorcycleSpecService.GetModels(manufacturerUrl);
-        return Json(models);
+        var models = await _motorcycleSpecService.GetMotorcycleModels(manufacturerUrl);
+        var filteredModels = models.Where(m => m.Name.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
+        return PartialView("_ModelSuggestions", filteredModels);
     }
 }
